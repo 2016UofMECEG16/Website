@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <title><%= title %></title>
+      <link rel='stylesheet' href='/stylesheets/style.css' />
+   </head>
+   <body> 
+      <h1> Welcome to G16's E-Pass website! </h1>     
+      <form method="post" action="/users">
+     
+         <% if(typeof(errorMessage) !== 'undefined') {  %>
+            <span><%= errorMessage %></span>
+         <% } %>
+         <p>
+            <label for="email">Email Address</label>
+            <input type="text" name="email" id="email"
+               placeholder="Email Address" required="true">
+         </p>
+         <p>
+            <input type="submit" value="Submit"> 
+         </p>      
+      </form>
+      <form method="get" action="/contents">              
+      <p>
+        <input type="submit" value="Get DB Contents"> 
+      </p>      
+      </form> 
+   </body>
+</html>

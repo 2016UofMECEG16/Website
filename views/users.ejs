@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>    
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>    
+    <% if(typeof(errorMessage) !== 'undefined') {%>
+            <span><%= errorMessage %></span>
+    <% } else {%>    
+      <h3> Hi <%= email %> </h3>    
+      <form method="post" action="/history">                          
+        <p>        
+          <input type="hidden" name="email" value=<%= email %>> 
+          <input type="submit" value="Get Transaction History">                           
+        </p>      
+      </form>
+      <form method="post" action="/add">       
+        <p>        
+          <input type="hidden" name="email" value=<%= email %>>  
+          <input type="submit" value="Add credits"> 
+          This feature is currently unavailable.
+        </p>      
+      </form>
+    <% } %> 
+    <form method="get" action="/">                                  
+      <input type="submit" value="Back">         
+    </form>
+  </body>
+</html>

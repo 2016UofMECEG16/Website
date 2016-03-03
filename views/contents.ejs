@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script type="text/javascript" src="/javascripts/sorttable.js"></script>
+  </head>
+  <body>
+    <% if(typeof(error) !== 'undefined') {%>
+            <span><%= error %></span>
+    <% } else {%>    
+      <h1>Database Contents</h1>
+      <div>  
+      	<table border="1" class="sortable">
+       		<tr>
+          		<th>CID</th><th>Dev</th><th>Balance</th><th>Email Address</th><th>Last Update</th>
+       		</tr>
+       		<% for (var i = 0; i < rows.length; i++) { %>
+    		    <tr>
+    			    <td><%= rows[i].CID %></td>
+              <td>              
+                  <% if (rows[i].Dev == 1) { %>
+                  Phone
+                  <% } else { %>
+                  Card
+                  <% } %>
+                </td>             
+    			    <td><%= rows[i].Balance.toFixed(2) %></td>
+              <td><%= rows[i].Email %></td>
+    			    <td sorttable_customkey=<%= rows[i].Sort %>><%= rows[i].LastUpdated %></td>
+    		    </tr>    
+    	   	<% } %>
+        </table>
+      </div>
+    <% } %>   
+    <button onclick="history.go(-1)">Back</button>
+    <button onclick="window.location.reload()">Refresh</button>
+    <form method="post" action="/contents">  
+      <p>
+        <input type="hidden" name="delete" value="delete"/>
+        <input type="submit" value="Delete" onclick="return confirm('Are you sure?')"/>                           
+      </p>
+    </form>
+  </body>
+</html>
