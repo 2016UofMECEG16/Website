@@ -9,7 +9,23 @@
             <span><%= errorMessage %></span>
     <% } else {%>    
       <h3> Hi <%= email %> </h3>    
-      <form method="post" action="/history">                          
+      <table>
+        <tr>
+          <td style="text-align:left">Current Balance:</td> 
+          <td style="text-align:left">$<%= rows[0].Balance %></td>
+        </tr>
+        <tr>        
+          <td style="text-align:left">Active Device:</td>
+          <td style="text-align:left">
+            <% if (rows[0].Dev == 1) { %>
+              Phone
+            <% } else { %>
+              Card
+            <% } %>    
+          </td>
+        </tr>
+      </table>
+      <form method="post" action="/history">
         <p>        
           <input type="hidden" name="email" value=<%= email %>> 
           <input type="submit" value="Get Transaction History">                           

@@ -9,7 +9,7 @@ router.post('/', function(req, res, next) {
 	pool.getConnection(function(err, con){
 		con.query('SELECT * FROM customers where Email=?', email, function(err, rows, fields){				
 			if(rows.length != 0)
-				res.render('users', {title: 'User', email: email});
+				res.render('users', {title: 'User', email: email, rows: rows});
 			else
 				res.render('users', {title: 'User', email: email, errorMessage: "Invalid email address"});
 			con.release();

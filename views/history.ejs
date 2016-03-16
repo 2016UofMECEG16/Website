@@ -11,16 +11,16 @@
       <header><h1>Transaction History for: <%= email%></h1></header>
       <div id="wrapper">
         <div style="font:16px/26px Georgia, Garamond, Serif;overflow-y:auto;">  
-        	<table border="1">
+          <table border="1">
             <thead>
-           		<tr>
-              		<th>CID</th><th>Action</th><th>Active Device</th><th>Balance</th><th>Balance Changes</th><th>Email Address</th><th>Updated</th>
-           		</tr>
+              <tr>
+              	<th>CID</th><th>Action</th><th>Active Device</th><th>Balance</th><th>Balance Changes</th><th>Email Address</th><th>Updated</th>
+              </tr>
             </thead>
             <tbody>
-           		<% for (var i = 0; i < rows.length; i++) { %>
-        		    <tr>
-        			    <td><%= rows[i].CID %></td>              
+              <% for (var i = 0; i < rows.length; i++) { %>
+                <tr>
+                  <td><%= rows[i].CID %></td>              
                   <td><%= rows[i].Action %></td>
                   <td>              
                     <% if (rows[i].Dev == 1) { %>
@@ -29,7 +29,7 @@
                     Card
                     <% } %>
                   </td>              
-        			    <td><%= rows[i].Balance.toFixed(2) %></td>            
+                  <td><%= rows[i].Balance.toFixed(2) %></td>     
                   <td>              
                     <% if (rows[i].BalanceChanges > 0) { %>
                     <FONT COLOR=green>+<%=rows[i].BalanceChanges.toFixed(2) %></FONT>
@@ -39,18 +39,16 @@
                     <%= rows[i].BalanceChanges %>
                     <% } %>
                   </td>
-                  
-        				  <td><%= rows[i].Email %></td>
-        			    <td><%= rows[i].Updated %></td>
-        		    </tr>    
-        	   	<% } %>
+                  <td><%= rows[i].Email %></td>
+                  <td><%= rows[i].Updated %></td>
+                </tr>    
+             	<% } %>
             </tbody>
           </table>
         </div>
-            <button onclick="history.go(-1)">Back</button>
-    <button onclick="window.location.reload()">Refresh</button>
+        <button onclick="history.go(-1)">Back</button>
+        <button onclick="window.location.reload()">Refresh</button>
       </div>
     <% } %>    
-
   </body>
 </html>
